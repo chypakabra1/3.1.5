@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .table td form {
+            height: 15px;
+        }
+
+        form  {
+            height: 30px;
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        // Функция для обработки входа в систему
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('floatingInput').value;
+            const password = document.getElementById('floatingPassword').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: email, password: password })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error('Неверные учетные данные');
+                    }
+                })
+                .then(token => {
+                    console.log('Успешный вход, токен:', token);
+                    // Здесь код для обработки успешного входа, например, сохранение токена и переход на другую страницу
+                })
+                .catch(error => {
+                    console.error('Ошибка входа:', error);
+                    // Здесь код для обработки ошибки входа
+                });
+        }
+    </script>
+</head>
+
+<body class="pt-5">
+
+<div class="col-4 mx-auto">
+
+    <main>
+        <form class="form-horizontal" role="form" onsubmit="handleLogin(event)">
+            <h1 class="h3 mb-3 fw-bold text-left">Please sign in</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="height: 50px">
+                <label for="floatingInput" class="text-muted d-flex align-items-center">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control d-flex align-items-center" id="floatingPassword" placeholder="Password" style="height: 50px">
+                <label for="floatingPassword" class="text-muted d-flex align-items-center">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Sign in</button>
+            <div id="error-message" style="color: red"></div>
+        </form>
+    </main>
+</div>
+
+</body>
+</html>

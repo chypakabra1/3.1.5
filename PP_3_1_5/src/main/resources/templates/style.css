@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+}
+/* Стили для неактивных вкладок */
+.tab-button {
+    background-color: lightblue; /* Голубой фон для неактивных вкладок */
+    border: none; /* Убираем границу */
+    padding: 10px 15px; /* Отступы */
+    transition: background-color 0.3s; /* Плавное изменение цвета фона */
+}
+
+/* Стили для активной вкладки */
+.tab-button.active {
+    background-color: grey; /* Серый фон для активной вкладки */
+    box-shadow: inset 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень внутри вкладки, создающая эффект нажатия */
+    font-weight: bold; /* Жирный шрифт для активной вкладки */
+}
+#usersTable {
+    width: 100%; /* Задаём ширину таблицы */
+    /* Автоматический отступ слева для выравнивания по центру */
+    /* Автоматический отступ справа для выравнивания по центру */
+    table-layout: fixed; /* Фиксированное распределение ширины столбцов */
+    margin: 0 auto;
+}
+
+#usersTable th, #usersTable td {
+    equal-width: true; /* Равная ширина для всех столбцов */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 10px; /* Отступы внутри ячеек */
+}
+
+.tab-content {
+    border: 1px solid #444; /* Граница вокруг содержимого вкладки */
+    padding: 10px;
+    margin-top: -1px; /* Смещаем содержимое вверх, чтобы скрыть верхнюю границу */
+}
+.sidebar {
+    height: 100%;
+    width: 200px;
+    float: left;
+    margin-top: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.main-content {
+    margin-left: 200px;
+    padding: 0px 10px;
+}
+/* Стили для верхней панели */
+.top-bar {
+    width: 100%;
+    background-color: #000; /* Чёрный фон */
+    color: #fff; /* Белый текст */
+    padding: 10px 20px; /* Отступы */
+    display: flex; /* Используем Flexbox */
+    justify-content: space-between; /* Распределение пространства между элементами */
+    align-items: center; /* Выравнивание элементов по центру */
+}
+.user-info {
+    display: flex; /* Используем Flexbox для группировки почты и ролей */
+    align-items: center; /* Выравнивание по центру */
+}
+.user-email {
+    margin-right: 15px; /* Отступ справа для почты */
+}
+.logout-button {
+    background-color: #f00; /* Красный фон для кнопки */
+    color: #fff; /* Белый текст */
+    border: none; /* Убираем границу */
+    padding: 5px 10px; /* Отступы */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+.tab.active, .tab:hover {
+    background-color: #ddd;
+}
+
+.tab-content.active {
+    display: block;
+}
+.tab-content {
+    padding: 10px;
+}
+.tab-header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.tab-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.tab-header li {
+    display: inline;
+    margin-right: 10px;
+}
+.tab-header a {
+    text-decoration: none;
+    color: black;
+}
+.main-content {
+    margin-left: 100px; /* Отступ слева равен ширине боковой панели */
+    /* Другие стили для основного содержимого */
+}
+.plain-button {
+    background: none;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit; /* Опционально, для наследования шрифта от родителя */
+}
+.plain-button:hover {
+    text-decoration: underline; /* Опционально, для подчеркивания при наведении */
+}
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
